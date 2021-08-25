@@ -4,16 +4,11 @@ using UnityEngine;
 
 public class Shoot : MonoBehaviour
 {
-
     public Transform projectileSpawn;
 
     public GameObject projectile;
     public float nextFire = 1.0f;
-    public float currentTime = 0.0f;
-    void Start()
-    {
-        projectileSpawn = this.gameObject.transform;
-    }
+    private float currentTime = 0.0f;
 
     void Update()
     {
