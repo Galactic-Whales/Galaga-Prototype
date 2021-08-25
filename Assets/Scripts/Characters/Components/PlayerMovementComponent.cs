@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class PlayerMovementComponent : CharacterMovementComponent
 {
+    private float HorizontalInput;
+
     protected override void Update()
     {
-        
+        HorizontalInput = Input.GetAxisRaw("Horizontal");
     }
 
     protected void FixedUpdate()
@@ -19,6 +21,6 @@ public class PlayerMovementComponent : CharacterMovementComponent
 
     public override void Move()
     {
-        
+        rb.velocity = new Vector2(HorizontalInput, 0) * speed;
     }
 }
