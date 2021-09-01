@@ -40,10 +40,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2884600686065882763}
   - component: {fileID: 3809337453850193126}
-  - component: {fileID: 5287466500691541391}
-  - component: {fileID: 7986391788918052689}
   - component: {fileID: 4240285969363564160}
   - component: {fileID: 1249569105}
+  - component: {fileID: 5334852757914868939}
+  - component: {fileID: 4842306789569350731}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -87,35 +87,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &5287466500691541391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4772474215925223556}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ce762739f9da744bbf88fcc20c0be9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 15
-  movementEnabled: 1
---- !u!114 &7986391788918052689
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4772474215925223556}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96f720aca4d1e6443b1ea8e1a7ad8d87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectileSpawn: {fileID: 1015437030116531875}
-  projectile: {fileID: 5969529268712476731, guid: 5fbcc66bd38d857419f996c3b14c0dd9, type: 3}
-  nextFire: 1
 --- !u!212 &4240285969363564160
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -164,7 +135,7 @@ SpriteRenderer:
   m_Size: {x: 8.6, y: 9.84}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &1249569105
@@ -193,3 +164,32 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 8.6, y: 9.84}
   m_EdgeRadius: 0
+--- !u!114 &5334852757914868939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4772474215925223556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e926c466fece4a43b68e44a0f23b48c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileSpawn: {fileID: 1015437030116531875}
+  projectile: {fileID: 5969529268712476731, guid: d2b7db0b8fe28db4b82c6e58ffb7726d, type: 3}
+  nextFire: 1
+--- !u!114 &4842306789569350731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4772474215925223556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ce762739f9da744bbf88fcc20c0be9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 15
+  movementEnabled: 1
