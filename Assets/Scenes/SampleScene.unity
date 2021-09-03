@@ -381,6 +381,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5334852757914868939, guid: 40f196c2d057f2c41b65104b3706c28c, type: 3}
+      propertyPath: nextFire
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 8570278795250357416, guid: 40f196c2d057f2c41b65104b3706c28c, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 2.5

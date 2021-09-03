@@ -7,7 +7,7 @@ public class Shoot : MonoBehaviour
     public Transform projectileSpawn;
 
     public GameObject projectile;
-    public float nextFire = 1.0f;
+    public float nextFire = 0.1f;
     private float currentTime = 0.0f;
 
     void Update()
@@ -18,13 +18,10 @@ public class Shoot : MonoBehaviour
     public void shoot()
     {
         currentTime += Time.deltaTime;
-
-        if (Input.GetButton ("Fire1") && currentTime > nextFire)
+        Debug.Log(currentTime);
+        if (Input.GetButtonDown ("Fire1") && currentTime >= nextFire)
         {
-            nextFire += currentTime;
-
             Instantiate (projectile, projectileSpawn.position, Quaternion.identity);
-            nextFire -= currentTime;
             currentTime = 0.0f;
         }
     }
