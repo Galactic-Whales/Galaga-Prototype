@@ -6,7 +6,7 @@ public class MoveProjectile : MonoBehaviour
 {
     private Rigidbody2D Projectile;
 
-    public float moveSpeed = 10.0f;
+    public float moveSpeed = 30.0f;
     void Start()
     {
         Projectile = this.gameObject.GetComponent<Rigidbody2D>();
