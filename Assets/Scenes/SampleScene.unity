@@ -321,21 +321,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1249569105, guid: 40f196c2d057f2c41b65104b3706c28c, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 8.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1249569105, guid: 40f196c2d057f2c41b65104b3706c28c, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 9.84
+      objectReference: {fileID: 0}
     - target: {fileID: 2884600686065882763, guid: 40f196c2d057f2c41b65104b3706c28c, type: 3}
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2884600686065882763, guid: 40f196c2d057f2c41b65104b3706c28c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.36
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2884600686065882763, guid: 40f196c2d057f2c41b65104b3706c28c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.48
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 2884600686065882763, guid: 40f196c2d057f2c41b65104b3706c28c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.9352824
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2884600686065882763, guid: 40f196c2d057f2c41b65104b3706c28c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -366,16 +374,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4240285969363564160, guid: 40f196c2d057f2c41b65104b3706c28c, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 52e2b88f0fed8214aa9805a42bec3a21, type: 3}
-    - target: {fileID: 4240285969363564160, guid: 40f196c2d057f2c41b65104b3706c28c, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4772474215925223556, guid: 40f196c2d057f2c41b65104b3706c28c, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8570278795250357416, guid: 40f196c2d057f2c41b65104b3706c28c, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8570278795250357416, guid: 40f196c2d057f2c41b65104b3706c28c, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7986391788918052689, guid: 40f196c2d057f2c41b65104b3706c28c, type: 3}
