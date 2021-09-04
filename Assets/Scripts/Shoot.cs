@@ -18,7 +18,7 @@ public class Shoot : MonoBehaviour
     public void shoot()
     {
         currentTime += Time.deltaTime;
-        Debug.Log(currentTime);
+
         if (Input.GetButtonDown ("Fire1") && currentTime >= nextFire)
         {
             Instantiate (projectile, projectileSpawn.position, Quaternion.identity);

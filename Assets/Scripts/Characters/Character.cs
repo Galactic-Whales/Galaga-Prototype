@@ -10,7 +10,7 @@ public class Character : MonoBehaviour
     public HealthComponent Health => healthComponent;
     public CharacterMovementComponent MovementComponent => movementComponent;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         healthComponent = GetComponent<HealthComponent>();
         movementComponent = GetComponent<CharacterMovementComponent>();

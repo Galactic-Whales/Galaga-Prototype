@@ -11,7 +11,7 @@ public abstract class CharacterMovementComponent : MonoBehaviour
 
     public abstract void Move();
 
-    private void Awake()
+    protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
