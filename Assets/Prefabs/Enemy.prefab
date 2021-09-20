@@ -118,6 +118,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1ba7f5a8cbee414bb9dab64ec0c73a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterStats: {fileID: 11400000, guid: b8d2e7dbfa085a142a439f64c54b1910, type: 2}
+  positioningPath: {fileID: 0}
+  divingPath: {fileID: 0}
+  formationSpot: {fileID: 0}
   defaultState: {fileID: 498618198317989209}
 --- !u!114 &5538962724307105153
 MonoBehaviour:
@@ -133,9 +137,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   movementEnabled: 1
-  positioningPath: {fileID: 0}
-  divingPath: {fileID: 0}
-  formationSpot: {fileID: 0}
 --- !u!114 &5261272872418932023
 MonoBehaviour:
   m_ObjectHideFlags: 0

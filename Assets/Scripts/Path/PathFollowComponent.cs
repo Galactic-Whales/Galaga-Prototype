@@ -11,11 +11,11 @@ public sealed class PathFollowComponent : MonoBehaviour
 
     private bool canMove;
 
-    private MovementProperties movementProperties;
+    private PathMovementProperties movementProperties;
 
     public event Action<PathCreator> OnPathMovementFinished;
 
-    public void SetPath(PathCreator path, MovementProperties movementProperties)
+    public void SetPath(PathCreator path, PathMovementProperties movementProperties)
     {
         if (path != null)
         {
@@ -54,9 +54,9 @@ public sealed class PathFollowComponent : MonoBehaviour
     }
 }
 
-public struct MovementProperties
+public struct PathMovementProperties
 {
-    public MovementProperties(float speed, EndOfPathInstruction instuction)
+    public PathMovementProperties(float speed, EndOfPathInstruction instuction)
     {
         Speed = speed;
         PathEndInstruction = instuction;

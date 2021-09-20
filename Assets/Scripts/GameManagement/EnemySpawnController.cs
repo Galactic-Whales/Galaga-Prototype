@@ -85,14 +85,14 @@ public sealed class EnemySpawnController : MonoBehaviour, ISceneController
 
                 if (enemyInstance != null)
                 {
-                    EnemyMovementComponent movementComponent = enemyInstance.GetComponent<EnemyMovementComponent>();
+                    Enemy enemy = enemyInstance.GetComponent<Enemy>();
 
-                    if (movementComponent != null)
+                    if (enemy != null)
                     {
                         PathCreator pathPrefab = SelectPath();
                         GameObject pathInstance = Instantiate(pathPrefab.gameObject);
 
-                        movementComponent.positioningPath = pathInstance.GetComponent<PathCreator>();
+                        enemy.positioningPath = pathInstance.GetComponent<PathCreator>();
 
                         OnEnemySpawned?.Invoke(enemyInstance.GetComponent<Enemy>());
                     }

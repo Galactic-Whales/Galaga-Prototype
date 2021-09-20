@@ -1,10 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PathCreation;
+using System;
 
-[RequireComponent(typeof(EnemyMovementComponent), typeof(FiniteStateMachine))]
+[RequireComponent(typeof(PathFollowComponent), typeof(FiniteStateMachine))]
 public class Enemy : Character, IFormationAssignable
 {
+    [HideInInspector] public PathCreator positioningPath;
+    [HideInInspector] public PathCreator divingPath;
+    [HideInInspector] public Transform formationSpot;
+
     protected EnemyMovementComponent enemyMovementComponent;
 
     [SerializeField] private State defaultState;
@@ -39,10 +45,7 @@ public class Enemy : Character, IFormationAssignable
 
     public void OnFormationAssigned(Transform spotT)
     {
-        if (enemyMovementComponent != null)
-        {
-            enemyMovementComponent.formationSpot = spotT;
-        }
+        formationSpot = spotT;
     }
 
     public void OnFormationUnassigned()

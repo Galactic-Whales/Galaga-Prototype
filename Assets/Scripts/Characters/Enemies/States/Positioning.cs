@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using PathCreation;
 
-public sealed class Positioning : State
+public sealed class Positioning : State, ICharacterComponent
 {
-    private EnemyMovementComponent movementComponent;
+    private Enemy enemy;
     private PathFollowComponent pathFollowComponent;
     private InFormation inFormationState;
+
+    private float speed;
 
     private Vector2 startLocation;
     private Vector2 endLocation;
@@ -17,23 +19,40 @@ public sealed class Positioning : State
     private float distanceTravelled;
     private float startToEndDistance;
 
+    private PathMovementProperties movementProperties;
+
     private void Awake()
     {
-        movementComponent = GetComponent<EnemyMovementComponent>();    
+        enemy = GetComponent<Enemy>();    
         pathFollowComponent = GetComponent<PathFollowComponent>();
         inFormationState = GetComponent<InFormation>();
+
+    }
+
+    public void OnDataInitialized(CharacterStats characterStats)
+    {
+        if (characterStats != null)
+        {
+            speed = characterStats.BaseSpeed;
+
+            movementProperties = new PathMovementProperties(speed, EndOfPathInstruction.Stop);
+        }
     }
 
     public override void OnEnter(FiniteStateMachine FSM)
     {
-        if (movementComponent != null)
-        {
-            movementComponent.StartPositioning();
-        }
+        ResetValues();
 
         if (pathFollowComponent != null)
         {
             pathFollowComponent.OnPathMovementFinished += OnPathFinished;
+
+            pathFollowComponent.SetPath(enemy.positioningPath, movementProperties);
+            pathFollowComponent.StartPathMovement();
+        }
+        else
+        {
+            Debug.LogError("EnemyMovementComponent::StartPositioning: pathFollowComponent is invalid.");
         }
     }
 
@@ -41,7 +60,7 @@ public sealed class Positioning : State
     {
         if (shouldMoveToFormation)
         {
-            distanceTravelled += Time.deltaTime * movementComponent.speed;
+            distanceTravelled += Time.deltaTime * speed;
             transform.position = Vector2.Lerp(startLocation, endLocation, distanceTravelled / startToEndDistance);
 
             if (distanceTravelled >= 1.0f && FSM != null)
@@ -53,17 +72,34 @@ public sealed class Positioning : State
 
     public override void OnExit(FiniteStateMachine FSM)
     {
-
+        ResetValues();
     }
 
     private void OnPathFinished(PathCreator path)
     {
-        if (movementComponent != null && movementComponent.formationSpot != null)
+        if (pathFollowComponent != null)
+        {
+            pathFollowComponent.OnPathMovementFinished -= OnPathFinished;
+        }
+
+        if (enemy != null)
         {
             startLocation = transform.position;
-            endLocation = movementComponent.formationSpot.position;
-            shouldMoveToFormation = true;
+            endLocation = enemy.formationSpot.position;
             startToEndDistance = Vector2.Distance(startLocation, endLocation);
+            distanceTravelled = 0.0f;
+            
+            shouldMoveToFormation = true;
         }
+    }
+
+    private void ResetValues()
+    {
+        startLocation = Vector2.zero;
+        endLocation = Vector2.zero;
+        startToEndDistance = 0.0f;
+        distanceTravelled = 0.0f;
+
+        shouldMoveToFormation = false;
     }
 }
