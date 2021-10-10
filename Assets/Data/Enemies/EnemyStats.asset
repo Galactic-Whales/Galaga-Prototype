@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c25a76a554b9a53438bffd851c2f2225, type: 3}
   m_Name: EnemyStats
   m_EditorClassIdentifier: 
-  baseSpeed: 0
-  baseLifes: 0
+  baseSpeed: 10
+  baseLifes: 2

@@ -30,7 +30,7 @@ public sealed class EnemySpawnController : MonoBehaviour, ISceneController
     {
         ResetPaths();
         UpdateCurrentSequence(newStage);
-        SpawnEnemy(possibleEnemies[0]);
+        SpawnEnemySequence(GetCurrentEnemyType(), 5);
 
         switch (newStage)
         {
@@ -75,38 +75,64 @@ public sealed class EnemySpawnController : MonoBehaviour, ISceneController
         currentSpawnSequence = null;
     }
 
-    public void SpawnEnemy(GameObject enemyPrefab)
+    public Enemy[] SpawnEnemySequence(GameObject enemyPrefab, int count)
     {
-        if (enemyPrefab != null)
+        PathCreator pathPrefab = SelectPath();
+
+        Enemy[] spawnedEnemies = new Enemy[count];
+
+        if (enemyPrefab != null && pathPrefab != null)
         {
-            if (currentSpawnSequence.Length > 0)
-            {
-                GameObject enemyInstance = Instantiate(enemyPrefab);
+            GameObject pathInstance = Instantiate(pathPrefab.gameObject);
 
-                if (enemyInstance != null)
+            for (int i = 0; i < count; i++)
+            {
+                Enemy currentEnemy = SpawnEnemy(enemyPrefab);
+
+                if (currentEnemy != null)
                 {
-                    Enemy enemy = enemyInstance.GetComponent<Enemy>();
+                    currentEnemy.positioningPath = pathInstance.GetComponent<PathCreator>();
+                    //TODO: Change delay to calculate sprite size
+                    currentEnemy.positioningDelay = 0.25f * i;
 
-                    if (enemy != null)
-                    {
-                        PathCreator pathPrefab = SelectPath();
-                        GameObject pathInstance = Instantiate(pathPrefab.gameObject);
-
-                        enemy.positioningPath = pathInstance.GetComponent<PathCreator>();
-
-                        OnEnemySpawned?.Invoke(enemyInstance.GetComponent<Enemy>());
-                    }
+                    spawnedEnemies[i] = currentEnemy;
                 }
-            }
-            else
-            {
-                Debug.LogError("EnemySpawnController::SpawnEnemy: Invalid sequence.");
             }
         }
         else
         {
-            Debug.LogError("EnemySpawnController::SpawnEnemy: Invalid reference.");
+            Debug.LogError("EnemySpawnController::SpawnEnemySequence: Invalid reference.");
         }
+
+        return spawnedEnemies;
+    }
+
+    private GameObject GetCurrentEnemyType()
+    {
+        return possibleEnemies[0];
+    }
+
+    public Enemy SpawnEnemy(GameObject enemyPrefab)
+    {
+        if (enemyPrefab != null)
+        {
+            GameObject enemyInstance = Instantiate(enemyPrefab);
+
+            if (enemyInstance != null)
+            {
+                Enemy enemy = enemyInstance.GetComponent<Enemy>();
+
+                if (enemy != null)
+                {
+                    OnEnemySpawned?.Invoke(enemy);
+
+                    return enemy;
+                }
+            }
+        }
+
+        Debug.LogError("EnemySpawnController::SpawnEnemy: Invalid reference.");
+        return null;
     }
 
     private PathCreator SelectPath()

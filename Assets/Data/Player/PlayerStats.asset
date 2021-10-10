@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 735fe6ce3cc697d4f8bdac8740750782, type: 3}
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
-  baseSpeed: 0
-  baseLifes: 0
-  shootRate: 0
-  availableShotsOnScreen: 0
+  baseSpeed: 10
+  baseLifes: 2
+  shotsPerSecond: 10
+  availableShotsOnScreen: 2

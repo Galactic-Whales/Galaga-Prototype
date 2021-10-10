@@ -22,5 +22,3 @@ MonoBehaviour:
   - side: 3
     paths:
     - {fileID: 7636650769324882691, guid: 7425eea7b7f3bcc4ca57b8ad5af8cbe2, type: 3}
-  - side: 3
-    paths: []

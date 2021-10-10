@@ -27,6 +27,7 @@ public class PlayerShootingHandler : ProjectileShooter, ICharacterComponent
     private void Update()
     {
         timeElapsed += Time.deltaTime;
+
         if (Input.GetButtonDown("Fire1") && timeElapsed >= shootingRate && projectilesOnScreen < maxProjectilesOnScreen)
         {
             Projectile projectile = Shoot();

@@ -10,6 +10,7 @@ public class Enemy : Character, IFormationAssignable
     [HideInInspector] public PathCreator positioningPath;
     [HideInInspector] public PathCreator divingPath;
     [HideInInspector] public Transform formationSpot;
+    [HideInInspector] public float positioningDelay;
 
     protected EnemyMovementComponent enemyMovementComponent;
 

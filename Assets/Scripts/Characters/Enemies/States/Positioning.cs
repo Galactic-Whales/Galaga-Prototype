@@ -43,17 +43,12 @@ public sealed class Positioning : State, ICharacterComponent
     {
         ResetValues();
 
-        if (pathFollowComponent != null)
+        if (enemy != null)
         {
-            pathFollowComponent.OnPathMovementFinished += OnPathFinished;
+            transform.position = enemy.positioningPath.bezierPath.GetPoint(0);
+        }
 
-            pathFollowComponent.SetPath(enemy.positioningPath, movementProperties);
-            pathFollowComponent.StartPathMovement();
-        }
-        else
-        {
-            Debug.LogError("EnemyMovementComponent::StartPositioning: pathFollowComponent is invalid.");
-        }
+        StartCoroutine(StartMovementDelay());
     }
 
     public override void Execute(FiniteStateMachine FSM)
@@ -101,5 +96,22 @@ public sealed class Positioning : State, ICharacterComponent
         distanceTravelled = 0.0f;
 
         shouldMoveToFormation = false;
+    }
+
+    private IEnumerator StartMovementDelay()
+    {
+        yield return new WaitForSeconds(enemy ? enemy.positioningDelay : 0.0f);
+
+        if (pathFollowComponent != null)
+        {
+            pathFollowComponent.OnPathMovementFinished += OnPathFinished;
+
+            pathFollowComponent.SetPath(enemy.positioningPath, movementProperties);
+            pathFollowComponent.StartPathMovement();
+        }
+        else
+        {
+            Debug.LogError("EnemyMovementComponent::StartPositioning: pathFollowComponent is invalid.");
+        }
     }
 }
